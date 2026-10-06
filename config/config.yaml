@@ -1,0 +1,16 @@
+# Runtime parameters — loaded by AgentRegistry, passed as Graph(config=...).
+# Separate from config/agent.yaml (the static manifest).
+
+max_retry: 3
+timeout_s: 30
+# Reserved for a future build that wires a real model — NOT consumed by the
+# current deterministic, rule-based generator (see
+# src/nodes/generate_customs_sections_node.py), which invokes no model and
+# does not load system_prompt_template. These keys document the wiring
+# contract only.
+llm:
+  system_prompt_template: "prompts/customs_declaration.j2"
+  temperature: 0.0
+  max_tokens: 4000
+security:
+  s3_gate_enabled: true
